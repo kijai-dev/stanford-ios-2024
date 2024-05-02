@@ -14,6 +14,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1B82ED672BE3CBEB00EB222B /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		B1DBE0092BE37EFE00869C54 /* stanford-ios-2024.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "stanford-ios-2024.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B1DBE00C2BE37EFE00869C54 /* stanford_ios_2024App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = stanford_ios_2024App.swift; sourceTree = "<group>"; };
 		B1DBE00E2BE37EFE00869C54 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +56,7 @@
 				B1DBE00E2BE37EFE00869C54 /* ContentView.swift */,
 				B1DBE0102BE37EFF00869C54 /* Assets.xcassets */,
 				B1DBE0122BE37EFF00869C54 /* Preview Content */,
+				1B82ED672BE3CBEB00EB222B /* README.md */,
 			);
 			path = "stanford-ios-2024";
 			sourceTree = "<group>";

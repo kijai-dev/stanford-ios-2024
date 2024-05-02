@@ -14,33 +14,32 @@ struct ContentView: View {
             CardView()
             CardView()
             CardView()
-        }.padding(16)
+        }
+        .padding(16)
+        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
     }
 }
 
 struct CardView: View {
-    var isFaceUp: Bool = false
+    @State var isFaceUp: Bool = false
+    
     var body: some View {
         ZStack {
-            if isFaceUp == false {
-                RoundedRectangle(cornerRadius: 10)
-                    .stroke(style: StrokeStyle(lineWidth: 1))
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(.white)
+            let base = RoundedRectangle(cornerRadius: 10)
+            
+            if isFaceUp {
+                base.stroke(style: StrokeStyle(lineWidth: 3))
+                base.fill(.white)
                 VStack {
-                    Text("얘들아 안녕").foregroundColor(Color.black)
-                    Text("호호 할머니")
+                    Text("안녕").foregroundColor(Color.blue)
                 }
             } else {
-                RoundedRectangle(cornerRadius: 10)
-                    .foregroundColor(.blue)
-                VStack {
-                    Text("얘들아 안녕").foregroundColor(Color.white)
-                    Text("호호 할머니").foregroundColor(Color.white)
-                }
+                base.fill(.blue)
             }
         }
-        .padding(4)
+        .onTapGesture {
+            isFaceUp.toggle()
+        }
     }
 }
 
@@ -53,3 +52,15 @@ struct CardView: View {
 #Preview {
     ContentView()
 }
+
+
+
+/* To-do list
+ 1. RoundedRectangle 변수화해서 재사용하기
+ 2. onTapGesture 이벤트 추가하기
+ 
+ Today's Keyword
+ - Struct
+ - View
+ - @State
+ */
