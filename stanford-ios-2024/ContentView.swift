@@ -8,22 +8,50 @@
 import SwiftUI
 
 struct ContentView: View {
-    let contents: [String] = ["1", "2", "3", "4", "5"]
+    let contents: [String] = ["1", "2", "3", "4", "5", "6", "7"]
+    
+    @State var cardCount: Int = 4
+    
     var body: some View {
-//      수동 반복
-//        VStack {
-//            ForEach(0..<4, id: \.self) { index in
-//                CardView(content: contents[index])
-//            }
-//        }
-//      Array 안의 데이터 갯수만큼 자동 반복
+        
         VStack {
-            ForEach( contents.indices, id: \.self) { index in
-                CardView(content: contents[index])
+            VStack {
+                HStack {
+//                    텍스트 버튼 만들기
+//                    Button("Remove card") {
+//                        cardCount -= 1
+//                    }
+//                    Spacer()
+//                    Button("Add card") {
+//                        cardCount += 1
+                    
+//                    아이콘 버튼 만들기
+                    Button(action: {
+                        if cardCount > 1 {
+                            cardCount -= 1
+                        }
+                    }, label: {
+                        Image(systemName: "minus.square")
+                    })
+                    Spacer()
+                    Button(action: {
+                        if cardCount < contents.count {
+                            cardCount += 1
+                        }
+                    }, label: {
+                        Image(systemName: "plus.square")
+                    })
+                    
+                }
+                .imageScale(.large)
+                
+                ForEach(0..<cardCount, id: \.self) { index in
+                    CardView(content: contents[index])
+                }
             }
+            .foregroundColor(.blue)
         }
-        .padding(16)
-        .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
+        .padding()
     }
 }
 
@@ -41,7 +69,9 @@ struct CardView: View {
                 VStack {
                     Text(content).font(.largeTitle)
                 }
+                .padding()
             } else {
+                base.stroke(style: StrokeStyle(lineWidth: 3))
                 base.fill(.blue)
             }
         }
@@ -73,13 +103,19 @@ To-do list
  4. ForEach 사용하기 ( id: \.self 포함하기 )
     - 0~3까지 수동으로 반복하기
     - Array.indicies를 이용해 자동으로 반복하기
+ 5. 카드 기본 갯수 셋팅하기
+ 6. 카드 제거/추가를 위한 버튼 만들기
+    - 텍스트 버튼 만들기
+    - 아이콘 버튼 만들기
+    - 버튼에 조건 추가하기
  
  Today's Keyword
- - View builder
+ - ViewBuilder
+ - implicit return
  
  Today's Lesson
  - Argument 순서를 지키기
- - I can use 3 things in a view builder: the conditionals, the list, the local variables
+ - I can use 3 things in a ViewBuilder: the conditionals, the list, the local variables
  - I cannot use: the for loop
  - Ranges: s..<d s…d
  */
