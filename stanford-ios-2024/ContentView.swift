@@ -8,12 +8,13 @@
 import SwiftUI
 
 struct ContentView: View {
+    let contents: [String] = ["1", "2", "3", "4"]
     var body: some View {
         VStack {
-            CardView(isFaceUp: true)
-            CardView()
-            CardView()
-            CardView()
+            CardView(content: contents[0], isFaceUp: true)
+            CardView(content: contents[1])
+            CardView(content: contents[2])
+            CardView(content: contents[3])
         }
         .padding(16)
         .foregroundColor(/*@START_MENU_TOKEN@*/.blue/*@END_MENU_TOKEN@*/)
@@ -21,6 +22,7 @@ struct ContentView: View {
 }
 
 struct CardView: View {
+    let content: String
     @State var isFaceUp: Bool = false
     
     var body: some View {
@@ -31,7 +33,7 @@ struct CardView: View {
                 base.stroke(style: StrokeStyle(lineWidth: 3))
                 base.fill(.white)
                 VStack {
-                    Text("안녕").foregroundColor(Color.blue)
+                    Text(content).font(.largeTitle)
                 }
             } else {
                 base.fill(.blue)
@@ -55,12 +57,14 @@ struct CardView: View {
 
 
 
-/* To-do list
- 1. RoundedRectangle 변수화해서 재사용하기
- 2. onTapGesture 이벤트 추가하기
+/*
+To-do list
+ 1. CardView 안에 content 생성하기
+ 2. ContentView 에서 content 안에 값을 직접 넣기
+ 3. ContentView 에서 Array 안에 값을 넣어 이용하기 ( 두 가지 표기법 )
+    - Array를 만들어서 컨텐츠 담기
+    - Array에서 꺼내서 쓰기
  
- Today's Keyword
- - Struct
- - View
- - @State
+ Today's Lesson
+ - Argument 순서를 지키기
  */
