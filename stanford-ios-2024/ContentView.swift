@@ -13,45 +13,51 @@ struct ContentView: View {
     @State var cardCount: Int = 4
     
     var body: some View {
-        
         VStack {
-            VStack {
-                HStack {
-//                    텍스트 버튼 만들기
-//                    Button("Remove card") {
-//                        cardCount -= 1
-//                    }
-//                    Spacer()
-//                    Button("Add card") {
-//                        cardCount += 1
-                    
-//                    아이콘 버튼 만들기
-                    Button(action: {
-                        if cardCount > 1 {
-                            cardCount -= 1
-                        }
-                    }, label: {
-                        Image(systemName: "minus.square")
-                    })
-                    Spacer()
-                    Button(action: {
-                        if cardCount < contents.count {
-                            cardCount += 1
-                        }
-                    }, label: {
-                        Image(systemName: "plus.square")
-                    })
-                    
-                }
-                .imageScale(.large)
-                
-                ForEach(0..<cardCount, id: \.self) { index in
-                    CardView(content: contents[index])
-                }
+            cardCountAdjuster
+            ScrollView {
+                cards
+                    .padding(5)
             }
-            .foregroundColor(.blue)
+            Spacer()
         }
         .padding()
+    }
+    
+    var cardCountAdjuster: some View {
+        HStack {
+            cardRemover
+            Spacer()
+            cardAdder
+        }
+        .imageScale(.large)
+    }
+    
+    func cardCountAdjuster(by offset: Int, symbol: String) -> some View {
+        Button(action: {
+            cardCount += offset
+        }, label: {
+            Image(systemName: symbol)
+        })
+        .disabled(cardCount + offset < 1 || cardCount + offset > contents.count)
+    }
+    
+    var cardRemover: some View {
+        cardCountAdjuster(by: -1, symbol: "minus.square")
+    }
+    
+    var cardAdder: some View {
+        cardCountAdjuster(by: +1, symbol: "plus.square")
+    }
+    
+    var cards: some View {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
+            ForEach(0..<cardCount, id: \.self) { index in
+                CardView(content: contents[index])
+                    .aspectRatio(3/4, contentMode: .fit)
+            }
+        }
+        .foregroundColor(.blue)
     }
 }
 
@@ -61,19 +67,16 @@ struct CardView: View {
     
     var body: some View {
         ZStack {
-            let base = RoundedRectangle(cornerRadius: 10)
+            let base = RoundedRectangle(cornerRadius: 5)
             
-            if isFaceUp {
-                base.stroke(style: StrokeStyle(lineWidth: 3))
+            Group {
+                base.stroke(style: StrokeStyle(lineWidth: 2))
                 base.fill(.white)
-                VStack {
-                    Text(content).font(.largeTitle)
-                }
-                .padding()
-            } else {
-                base.stroke(style: StrokeStyle(lineWidth: 3))
-                base.fill(.blue)
+                Text(content).font(.largeTitle)
             }
+            .opacity(isFaceUp ? 1 : 0)
+            base.fill().opacity(isFaceUp ? 0 : 1)
+            base.stroke(style: StrokeStyle(lineWidth: 2))
         }
         .onTapGesture {
             isFaceUp.toggle()
@@ -108,14 +111,33 @@ To-do list
     - 텍스트 버튼 만들기
     - 아이콘 버튼 만들기
     - 버튼에 조건 추가하기
+ 7. 코드 쪼개기
+ 8. 제거/추가 버튼 합치기
+    - 함수 만들기
+ 9. Grid 만들기
+    - LasyVGrid 이용하기
+    - GridItem에 최소 너비 적용하기
+    - GridItem에 비율 적용하기
+    - ScrollView 적용하기
+10. 카드가 뒷면일 때 작아지는 문제 해결하기
+    - 조건문을 Group으로 대체해 컨텐츠를 항시 불러오기
+    - Group에 카드가 뒷면일 때 컨텐츠를 투명하게 하는 조건문을 적용하기
  
  Today's Keyword
  - ViewBuilder
- - implicit return
+ - Implicit return
+ - `.imageScale`
+ - `func`
+ - `.disabled`
+ - `LasyVGrid` & `GridItem`
+ - `.aspectRatio`
+ - `ScrollView`
+ - `Group`
  
  Today's Lesson
  - Argument 순서를 지키기
  - I can use 3 things in a ViewBuilder: the conditionals, the list, the local variables
  - I cannot use: the for loop
  - Ranges: s..<d s…d
+ - 코드는 12줄 미만으로 쪼개는 습관 만들기
  */
