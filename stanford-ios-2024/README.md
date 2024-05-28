@@ -1,3 +1,30 @@
+# 240524
+## 오늘 한 일
+- Swift Tour 읽기
+
+## 오늘 배운 것
+- `map`을 사용할 때는 자동으로 루프가 돌아서 `for` 루프를 사용하지 않음
+
+    ``` swift
+    // map 사용 시
+    var numbers = [20, 19, 7, 12]
+    let modifiedNumbers = numbers.map { (number: Int) -> Int in
+        return number % 2 == 0 ? number : 0
+    }
+    print(modifiedNumbers) ```
+    ``` swift
+    // for loop 사용 시
+    var numbers = [20, 19, 7, 12]
+    var modifiedNumbers: [Int] = []
+    for number in numbers {
+        if number % 2 != 0 {
+            modifiedNumbers.append(0)
+        } else {
+            modifiedNumbers.append(number)
+        }
+    }
+    print(modifiedNumbers) ```
+
 # 240503
 ## 오늘 한 일
 - 카드 컨텐츠를 `Array`화 하기

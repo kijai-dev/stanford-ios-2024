@@ -98,46 +98,12 @@ struct CardView: View {
 
 /*
 To-do list
- 1. CardView 안에 content 생성하기
- 2. ContentView 에서 content 안에 값을 직접 넣기
- 3. ContentView 에서 Array 안에 값을 넣어 이용하기 ( 두 가지 표기법 )
-    - Array를 만들어서 컨텐츠 담기
-    - Array에서 꺼내서 쓰기
- 4. ForEach 사용하기 ( id: \.self 포함하기 )
-    - 0~3까지 수동으로 반복하기
-    - Array.indicies를 이용해 자동으로 반복하기
- 5. 카드 기본 갯수 셋팅하기
- 6. 카드 제거/추가를 위한 버튼 만들기
-    - 텍스트 버튼 만들기
-    - 아이콘 버튼 만들기
-    - 버튼에 조건 추가하기
- 7. 코드 쪼개기
- 8. 제거/추가 버튼 합치기
-    - 함수 만들기
- 9. Grid 만들기
-    - LasyVGrid 이용하기
-    - GridItem에 최소 너비 적용하기
-    - GridItem에 비율 적용하기
-    - ScrollView 적용하기
-10. 카드가 뒷면일 때 작아지는 문제 해결하기
-    - 조건문을 Group으로 대체해 컨텐츠를 항시 불러오기
-    - Group에 카드가 뒷면일 때 컨텐츠를 투명하게 하는 조건문을 적용하기
+ 1.
  
- Today's Keyword
- - ViewBuilder
- - Implicit return
- - `.imageScale`
- - `func`
- - `.disabled`
- - `LasyVGrid` & `GridItem`
- - `.aspectRatio`
- - `ScrollView`
- - `Group`
+Today's Keyword
+ -
  
- Today's Lesson
- - Argument 순서를 지키기
- - I can use 3 things in a ViewBuilder: the conditionals, the list, the local variables
- - I cannot use: the for loop
- - Ranges: s..<d s…d
- - 코드는 12줄 미만으로 쪼개는 습관 만들기
- */
+Today's Lesson
+ - Struct in functional programming VS class in object-oriented programming
+ - Array types: String, Int...
+*/
