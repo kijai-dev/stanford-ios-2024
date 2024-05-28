@@ -11,7 +11,9 @@
     let modifiedNumbers = numbers.map { (number: Int) -> Int in
         return number % 2 == 0 ? number : 0
     }
-    print(modifiedNumbers) ```
+    print(modifiedNumbers)
+    ```
+    
     ``` swift
     // for loop 사용 시
     var numbers = [20, 19, 7, 12]
@@ -23,7 +25,8 @@
             modifiedNumbers.append(number)
         }
     }
-    print(modifiedNumbers) ```
+    print(modifiedNumbers)
+    ```
 
 # 240503
 ## 오늘 한 일
