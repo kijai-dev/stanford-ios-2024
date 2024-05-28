@@ -1,3 +1,10 @@
+# 240528
+## 오늘 한 일
+- Swift Tour 읽기 ( Object and classes ~ Enumerations and Structures )
+
+## 오늘 배운 것
+- What is to force unwrap an optional using `!` operator: 값이 optional 일 때, 검증 단계를 강제적으로 생략하기 위해 사용
+
 # 240524
 ## 오늘 한 일
 - Swift Tour 읽기
