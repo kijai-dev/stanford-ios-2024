@@ -19,7 +19,6 @@ struct ContentView: View {
                 cards
                     .padding(5)
             }
-            Spacer()
         }
         .padding()
     }

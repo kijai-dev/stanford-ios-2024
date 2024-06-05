@@ -1,9 +1,50 @@
+# 240604
+## 오늘 한 일
+- 강의 복습하기 ( 1 ~ 2 )
+- Swift Tour 읽기 ( Generics )
+- 알고리즘 문제 풀어보기
+
+## 오늘 배운 것
+- 함수에서 어떤 값이 반환되면 즉시 함수는 종료된다.
+    ``` swift
+    func anyCommonElements<T: Sequence, U: Sequence>(_ lhs: T, _ rhs: U) -> Bool
+    where T.Element: Equatable, T.Element == U.Element
+    {
+        // 중복되는 값을 담을 배열 만들기. 이때 배열은 T 에 값을 담아야 하므로 T.Element 타입으로 선언하기
+        var commonElements: [T.Element] = []
+        for lhsItem in lhs {
+            for rhsItem in rhs {
+                if lhsItem == rhsItem {
+                    commonElements.append(lhsItem)
+               // return 값이 결정되는 순간 함수가 종료되므로, 조건문이 참일 경우 중복 값 배열에 추가한 후 true 반환
+                    return true
+                }
+            }
+        }
+        // 함수가 반복문 동안 다 돌았음에도 배열에 들어간 값이 없으면 false 반환
+        return false
+    }
+
+    anyCommonElements([1, 2, 3], [3])
+    ```
+
+
+# 240531
+## 오늘 한 일
+- Swift Tour 읽기 ( Enumerations and Structures )
+- 알고리즘 문제 풀어보기 
+
+## 오늘 배운 것
+- 콘솔에서 input 받기: readLine() 사용
+
+
 # 240528
 ## 오늘 한 일
 - Swift Tour 읽기 ( Object and classes ~ Enumerations and Structures )
 
 ## 오늘 배운 것
 - What is to force unwrap an optional using `!` operator: 값이 optional 일 때, 검증 단계를 강제적으로 생략하기 위해 사용
+
 
 # 240524
 ## 오늘 한 일
